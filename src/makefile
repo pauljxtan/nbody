@@ -4,9 +4,9 @@ CFLAGS = -g -Wall
 INCLUDES = -I../include
 LFLAGS = -L../lib
 LIBS = -lm
-SRCS = nbody.cpp
+SRCS = nbody.cpp nbody_rk4.cpp integrate.cpp
 OBJS = $(SRCS:.cpp=.o)
-MAIN = nbody
+MAIN = integrate
 
 .PHONY: depend clean
 

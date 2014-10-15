@@ -21,8 +21,8 @@ int main(int argc, char *argv[]) {
                        -1.0, -2.0, 0.0, 0.0, 0.0, 0.0,
                        -1.0,  1.0, 0.0, 0.0, 0.0, 0.0};
 
-    NBodyRK4 system = NBodyRK4(3, 3, m, 1e-5, 0.0, x_init, false, NULL);
-    system.integrate(2e5);
+    NBodyRK4 system = NBodyRK4(3, 3, m, 0.0, x_init, false, NULL);
+    system.integrate(10.0, 1e-6, 1e-6);
 
     return 0;
 }

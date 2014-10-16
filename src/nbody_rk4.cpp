@@ -33,7 +33,8 @@ NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double X_init[],
     this->k3.resize(2 * n_dims * n_bodies);
     this->k4.resize(2 * n_dims * n_bodies);
 
-    print_state();
+    if (!write)
+        print_state();
 }
 std::valarray<double> NBodyRK4::newton_grav(std::valarray<double> X) {
     // Reset all values to zero
@@ -100,8 +101,9 @@ void NBodyRK4::integrate(double dur, double dt_init, double delta) {
             X = step(dt, X);
         }
 
-        print_state();
         if (write)
             write_state();
+        else
+            print_state();
     }
 }

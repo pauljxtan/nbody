@@ -1,3 +1,6 @@
+#ifndef NBODY_RK4_HPP
+#define NBODY_RK4_HPP
+
 #include <stdio.h>
 #include <valarray>
 
@@ -5,7 +8,7 @@ class NBodyRK4: public NBody {
     private:
         std::valarray<double> ri;
         std::valarray<double> rj;
-        
+
         std::valarray<double> k1;
         std::valarray<double> k2;
         std::valarray<double> k3;
@@ -25,3 +28,5 @@ class NBodyRK4: public NBody {
         double step_err(std::valarray<double>, std::valarray<double>);
         void integrate(double, double, double);
 };
+
+#endif // NBODY_RK4_HPP

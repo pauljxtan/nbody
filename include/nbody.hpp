@@ -1,3 +1,6 @@
+#ifndef NBODY_HPP
+#define NBODY_HPP
+
 #include <stdio.h>
 #include <valarray>
 
@@ -41,3 +44,5 @@ class NBody {
         // Returns the velocity slice for the given body
         std::valarray<double> vel(std::valarray<double>, int);
 };
+
+#endif // NBODY_HPP

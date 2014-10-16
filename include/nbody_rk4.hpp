@@ -22,7 +22,7 @@ class NBodyRK4: public NBody {
         double rho;
         
     public:
-        NBodyRK4(int, int, double [], double, double [], bool, FILE *);
+        NBodyRK4(int, int, double [], double [], bool, FILE *);
         std::valarray<double> newton_grav(std::valarray<double>);
         std::valarray<double> step(double, std::valarray<double>);
         double step_err(std::valarray<double>, std::valarray<double>);

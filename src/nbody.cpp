@@ -1,4 +1,5 @@
 #include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <iostream>
 #include <valarray>
@@ -12,8 +13,10 @@ void NBody::print_state() {
 }
 
 void NBody::write_state() {
-    // TODO
-    ;
+    std::fprintf(p_outfile, "%f ", t);
+    for (int i = 0; i < X.size() - 1; i++)
+        std::fprintf(p_outfile, "%f ", X[i]);
+    fprintf(p_outfile, "%f\n", X[X.size() - 1]);
 }
 
 double NBody::dist(std::valarray<double> a, std::valarray<double> b) {

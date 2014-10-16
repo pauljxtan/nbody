@@ -8,14 +8,14 @@
 // TODO:
 //     adaptive step sizes
 
-NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double t_init,
-                   double X_init[], bool write, FILE *p_outfile) {
+NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double X_init[],
+                   bool write, FILE *p_outfile) {
     this->n_bodies = n_bodies;
     this->n_dims = n_dims;
     this->m = (double *) malloc(n_bodies * sizeof(double));
     for (int i = 0; i < n_bodies; i++)
         this->m[i] = m[i];
-    this->t = t_init;
+    this->t = 0.0;
     this->X.resize(2 * n_dims * n_bodies);
     for (int i = 0; i < 2 * n_dims * n_bodies; i++)
         this->X[i] = X_init[i];

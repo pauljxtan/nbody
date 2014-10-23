@@ -23,7 +23,6 @@ int main(int argc, char *argv[]) {
     char infilename[MAX_FILENAME_LEN];
     char outfilename[MAX_FILENAME_LEN];
     bool write = false;
-    bool verbose = true;
     double dur;
     double dt_init;
     double delta;
@@ -45,7 +44,6 @@ int main(int argc, char *argv[]) {
             case 'w':
                 write = true;
                 // No longer write to stdout
-                verbose = false;
                 std::strcpy(outfilename, optarg);
                 break;
             default:
@@ -80,14 +78,12 @@ int main(int argc, char *argv[]) {
                 params[PARAM_IDX_SKIP + i * (2 * n_dims + 1) + j + 1];
     }
 
-    if (write)
-        p_outfile = fopen(outfilename, "w");
+    if (write) p_outfile = fopen(outfilename, "w");
 
     NBodyRK4 system = NBodyRK4(n_bodies, n_dims, m, x_init, write, p_outfile);
     system.integrate(dur, dt_init, delta);
 
-    if (write)
-        fclose(p_outfile);
+    if (write) fclose(p_outfile);
 
     return 0;
 }

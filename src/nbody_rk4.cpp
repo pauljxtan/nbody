@@ -13,12 +13,10 @@ NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double X_init[],
     this->n_bodies = n_bodies;
     this->n_dims = n_dims;
     this->m = (double *) malloc(n_bodies * sizeof(double));
-    for (int i = 0; i < n_bodies; i++)
-        this->m[i] = m[i];
+    for (int i = 0; i < n_bodies; i++) this->m[i] = m[i];
     this->t = 0.0;
     this->X.resize(2 * n_dims * n_bodies);
-    for (int i = 0; i < 2 * n_dims * n_bodies; i++)
-        this->X[i] = X_init[i];
+    for (int i = 0; i < 2 * n_dims * n_bodies; i++) this->X[i] = X_init[i];
     this->X_dot.resize(2 * n_dims * n_bodies, 0.0);
     this->X_new_1a.resize(2 * n_dims * n_bodies);
     this->X_new_1b.resize(2 * n_dims * n_bodies);
@@ -33,8 +31,7 @@ NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double X_init[],
     this->k3.resize(2 * n_dims * n_bodies);
     this->k4.resize(2 * n_dims * n_bodies);
 
-    if (!write)
-        print_state();
+    if (!write) print_state();
 }
 std::valarray<double> NBodyRK4::newton_grav(std::valarray<double> X) {
     // Reset all values to zero
@@ -101,9 +98,7 @@ void NBodyRK4::integrate(double dur, double dt_init, double delta) {
             X = step(dt, X);
         }
 
-        if (write)
-            write_state();
-        else
-            print_state();
+        if (write) write_state();
+        else       print_state();
     }
 }

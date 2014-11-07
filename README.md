@@ -19,3 +19,13 @@ $ ./src/integrate -p params -w results
              initial time step, desired accuracy
 * Each remaining row: Mass of body, initial position in each dimension,
                       initial speed in each dimension
+
+### Real-time plotting ###
+A Python script (requires matplotlib) __plot_realtime.py__ is included for viewing the orbits in real time. One could pipe stdout directly from the simulator like so:
+```bash
+$ ./src/integrate -p params | ./plot_realtime.py [frameskip]
+```
+or read it in from a results file:
+```bash
+$ ./plot_realtime.py < results
+```

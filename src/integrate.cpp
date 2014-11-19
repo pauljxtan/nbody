@@ -8,26 +8,22 @@
 #include "nbody.hpp"
 #include "nbody_rk4.hpp"
 
-/*
- * TODO:
- *     parse input file / arguments
- */
-
 const int MAX_LINE_LEN = 128;
 const int MAX_ELEM_LEN = 32;
 const int MAX_FILENAME_LEN = 128;
+// Number of values in parameter file before state vectors
 const int PARAM_IDX_SKIP = 5;
 
 int main(int argc, char *argv[]) {
-    int c;
+    bool write = false;
     char infilename[MAX_FILENAME_LEN];
     char outfilename[MAX_FILENAME_LEN];
-    bool write = false;
-    double dur;
-    double dt_init;
-    double delta;
+    int c;
     int n_bodies;
     int n_dims;
+    double delta;
+    double dur;
+    double dt_init;
     FILE *p_outfile = NULL;
 
     // Parse arguments
@@ -35,6 +31,7 @@ int main(int argc, char *argv[]) {
         print_usage();
         return 1;
     }
+
     opterr = 0;
     while ((c = getopt(argc, argv, "p:w:")) != EOF) {
         switch (c) {
@@ -43,7 +40,6 @@ int main(int argc, char *argv[]) {
                 break;
             case 'w':
                 write = true;
-                // No longer write to stdout
                 std::strcpy(outfilename, optarg);
                 break;
             default:
@@ -80,7 +76,9 @@ int main(int argc, char *argv[]) {
 
     if (write) p_outfile = fopen(outfilename, "w");
 
+    // Initialize the integrator
     NBodyRK4 system = NBodyRK4(n_bodies, n_dims, m, x_init, write, p_outfile);
+    // Perform the integration
     system.integrate(dur, dt_init, delta);
 
     if (write) fclose(p_outfile);

@@ -1,3 +1,5 @@
+/* An n-body integrator class using 4th-order Runge-Kutta (RK4). */
+
 #ifndef NBODY_RK4_HPP
 #define NBODY_RK4_HPP
 
@@ -6,20 +8,17 @@
 
 class NBodyRK4: public NBody {
     private:
+        // Various intermediate data arrays made to be class members for
+        // convenience and code brevity
         std::valarray<double> ri;
         std::valarray<double> rj;
-
         std::valarray<double> k1;
         std::valarray<double> k2;
         std::valarray<double> k3;
         std::valarray<double> k4;
-
         std::valarray<double> X_new_1a;
         std::valarray<double> X_new_1b;
         std::valarray<double> X_new_2;
-
-        double eps_sum_sq;
-        double rho;
         
     public:
         NBodyRK4(int, int, double [], double [], bool, FILE *);

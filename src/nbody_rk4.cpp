@@ -62,7 +62,7 @@ std::valarray<double> NBodyRK4::step(double dt, std::valarray<double> X) {
 }
 
 double NBodyRK4::step_err(std::valarray<double> X1, std::valarray<double> X2) {
-    eps_sum_sq = 0.0;
+    double eps_sum_sq = 0.0;
 
     for (int i = 0; i < n_bodies; i++) {
         for (int j = 0; j < n_dims; j++)
@@ -84,7 +84,7 @@ void NBodyRK4::integrate(double dur, double dt_init, double delta) {
         // Second estimate
         X_new_2 = step(2.0 * dt, X);
 
-        rho = delta * dt / step_err(X_new_1b, X_new_2);
+        double rho = delta * dt / step_err(X_new_1b, X_new_2);
         if (rho > 1.0) {
             // Keep step, adjust step size, move on to next iteration
             t += dt;

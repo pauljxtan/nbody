@@ -1,3 +1,5 @@
+/* The base n-body integrator class. */
+
 #ifndef NBODY_HPP
 #define NBODY_HPP
 

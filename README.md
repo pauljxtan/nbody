@@ -13,6 +13,7 @@ N-body simulations in C++.
 ```bash
 $ ./src/integrate -p params -w results
 ```
+(Note: standard output is switched off if writing to file)
 
 ### Input parameter file ###
 * First row: Number of bodies, number of dimensions, integration duration,

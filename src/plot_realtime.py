@@ -28,7 +28,7 @@ def main():
             continue
 
         # Process data
-        data = map(float, line.split(" "))
+        data = map(float, line.strip().split(" "))
 
         # Update plot
         sp.set_title("t = %d" % frame_count)

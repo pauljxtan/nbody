@@ -29,4 +29,4 @@ $ ./src/integrate -p params | ./plot_realtime.py [frameskip]
 or read it in from a results file:
 ```bash
 $ ./plot_realtime.py < results
-```
+N.B. This scripts includes a lot of hard-coded stuff, so it will have to be modified to suit the particular parameters of your system.

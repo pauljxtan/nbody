@@ -1,4 +1,5 @@
-/* An n-body integrator class using 4th-order Runge-Kutta (RK4). */
+/* An N-body integrator class using 4th-order Runge-Kutta (RK4) with adaptive
+ * step sizes */
 
 #ifndef NBODY_RK4_HPP
 #define NBODY_RK4_HPP

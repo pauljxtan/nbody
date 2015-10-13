@@ -5,9 +5,6 @@
 #include "nbody.hpp"
 #include "nbody_rk4.hpp"
 
-// TODO:
-//     adaptive step sizes
-
 NBodyRK4::NBodyRK4(int n_bodies, int n_dims, double m[], double X_init[],
                    bool write, FILE *p_outfile) {
     this->n_bodies = n_bodies;

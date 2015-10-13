@@ -8,10 +8,9 @@
 #include "nbody.hpp"
 #include "nbody_rk4.hpp"
 
-const int MAX_LINE_LEN = 128;
-const int MAX_ELEM_LEN = 32;
 const int MAX_FILENAME_LEN = 128;
-// Number of values in parameter file before state vectors
+// Number of parameters in first row of parameter file
+// (i.e. everything before state vectors)
 const int PARAM_IDX_SKIP = 5;
 
 int main(int argc, char *argv[]) {
@@ -78,7 +77,7 @@ int main(int argc, char *argv[]) {
 
     // Initialize the integrator
     NBodyRK4 system = NBodyRK4(n_bodies, n_dims, m, x_init, write, p_outfile);
-    // Perform the integration
+    // Begin the simulation
     system.integrate(dur, dt_init, delta);
 
     if (write) fclose(p_outfile);

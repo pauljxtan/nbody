@@ -1,5 +1,5 @@
-#CC = g++
-CC = clang++
+CC = g++
+#CC = clang++
 CFLAGS = -g -Wall
 INCLUDES = -I../include
 LFLAGS = -L../lib

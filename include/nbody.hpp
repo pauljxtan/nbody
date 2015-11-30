@@ -16,7 +16,7 @@ class NBody {
         // Number of spatial dimensions
         int n_dims;
         // Masses
-        double *m;
+        double * m;
         // Elapsed time
         double t;
         // Current time step
@@ -28,9 +28,8 @@ class NBody {
         // Write flag
         bool write;
         // Output file pointer
-        FILE *p_outfile;
+        FILE * p_outfile;
 
-    public:
         // Prints the current system state
         void print_state();
         // Writes the current system state to file

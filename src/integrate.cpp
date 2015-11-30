@@ -15,15 +15,10 @@ const int PARAM_IDX_SKIP = 5;
 
 int main(int argc, char *argv[]) {
     bool write = false;
-    char infilename[MAX_FILENAME_LEN];
-    char outfilename[MAX_FILENAME_LEN];
-    int c;
-    int n_bodies;
-    int n_dims;
-    double delta;
-    double dur;
-    double dt_init;
-    FILE *p_outfile = NULL;
+    char infilename[MAX_FILENAME_LEN], outfilename[MAX_FILENAME_LEN];
+    int c, n_bodies, n_dims;
+    double delta, duration, dt_init;
+    FILE * p_outfile = NULL;
 
     // Parse arguments
     if (argc < 2) {
@@ -57,7 +52,7 @@ int main(int argc, char *argv[]) {
     // Get number of dimensions
     n_dims = (int) params[1];
     // Get integration duration
-    dur = params[2];
+    duration = params[2];
     // Get initial time step
     dt_init = params[3];
     // Get desired accuracy
@@ -78,7 +73,7 @@ int main(int argc, char *argv[]) {
     // Initialize the integrator
     NBodyRK4 system = NBodyRK4(n_bodies, n_dims, m, x_init, write, p_outfile);
     // Begin the simulation
-    system.integrate(dur, dt_init, delta);
+    system.integrate(duration, dt_init, delta);
 
     if (write) fclose(p_outfile);
 
